@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
+import { DiscordLogoIcon } from "@radix-ui/react-icons";
+import { Icon, MailIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Markdown from "react-markdown";
@@ -112,11 +114,22 @@ export default function Page() {
                 Kontakt
               </div>
               <h2 className="text-xl tracking-tighter sm:text-3xl">
-                Kontaktiere mich via E-Mail
+                Kontaktiere mich
               </h2>
-              <Button variant="outline">
-                <Link href="mailto:hello@lucabmn.de">Email</Link>
-              </Button>
+              <div className="flex flex-col space-y-2">
+                <Button variant="outline">
+                  <div className="flex items-center justify-center space-x-2">
+                    <MailIcon className="w-4 h-4" />
+                    <Link href="mailto:hello@lucabmn.de">E-Mail</Link>
+                  </div>
+                </Button>
+                <Button variant="outline">
+                  <div className="flex items-center justify-center space-x-2">
+                    <DiscordLogoIcon className="w-4 h-4" />
+                    <p>@luca.sync</p>
+                  </div>
+                </Button>
+              </div>
             </div>
           </BlurFade>
         </div>
