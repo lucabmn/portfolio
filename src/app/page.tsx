@@ -136,7 +136,7 @@ export default function Page() {
       </section>
       <footer id="footer">
         <div className="grid items-center justify-center self-center">
-          <p>Copyright © 2024, Luca</p>
+          <p>Copyright © 2025, Luca</p>
           <p>
             Inspired by{" "}
             <a

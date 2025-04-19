@@ -26,7 +26,7 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@lucasync.de",
+    email: "hello@lucabmn.de",
     social: {
       GitHub: {
         name: "GitHub",
@@ -37,7 +37,7 @@ export const DATA = {
       },
       email: {
         name: "Email",
-        url: "mailto:hello@lucasync.de",
+        url: "mailto:hello@lucabmn.de",
         icon: Icons.email,
 
         navbar: false,
@@ -46,8 +46,58 @@ export const DATA = {
   },
   projects: [
     {
+      title: "WeddingVault",
+      href: "https://weddingvault.de",
+      dates: "January 2025 - Present",
+      active: true,
+      description:
+        "Collect and share all your wedding moments in one secure place. Simple, fast and private.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Better Auth",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://weddingvault.de",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/projects/weddingvault.png",
+      video: "",
+    },
+    {
+      title: "WaveDesk",
+      href: "https://wavedesk.app",
+      dates: "December 2024 - Present",
+      active: true,
+      description: "A tenant management system for microsoft 365 tenants.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://wavedesk.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/projects/wavedesk.png",
+      video: "",
+    },
+    {
       title: "Nexuscraft",
-      href: "https://magicui.design",
+      href: "https://nexuscraft.app",
       dates: "December 2024 - Present",
       active: true,
       description: "Soon.",
@@ -72,7 +122,7 @@ export const DATA = {
     },
     {
       title: "Pitlane (Discontinued)",
-      href: "https://llm.report",
+      href: "https://pitlane.app",
       dates: "April 2023 - September 2023",
       active: false,
       description:
@@ -89,12 +139,12 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://pitlane.lucabmn.de/",
+          href: "https://pitlane.app",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "AppStore",
-          href: "https://pitlane.lucabmn.de/",
+          href: "https://store.pitlane.app",
           icon: <Icons.globe className="size-3" />,
         },
       ],
