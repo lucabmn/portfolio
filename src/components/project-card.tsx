@@ -1,15 +1,8 @@
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Markdown from "react-markdown";
 
 interface Props {
   title: string;
@@ -41,76 +34,105 @@ export function ProjectCard({
   className,
 }: Props) {
   return (
-    <Card
-      className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-      }
+    <div
+      className={cn(
+        "group relative flex flex-col overflow-hidden rounded-xl glass glass-hover h-full",
+        className
+      )}
     >
-      <Link
-        href={href || "#"}
-        className={cn("block cursor-pointer", className)}
-      >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
-          />
-        )}
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={500}
-            height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
-          />
-        )}
-      </Link>
-      <CardHeader className="px-2">
-        <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <time className="font-sans text-xs">{dates}</time>
-          <div className="hidden font-sans text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+      {/* Image/Video Section */}
+      <Link href={href || "#"} className="block relative overflow-hidden">
+        <div className="relative h-44 overflow-hidden">
+          {video && (
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+          {image && !video && (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+          
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* View project indicator */}
+          <div className="absolute top-3 right-3 flex items-center gap-1 bg-background/80 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+            <span>Ansehen</span>
+            <ArrowUpRight className="w-3 h-3" />
           </div>
-          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-            {description}
-          </Markdown>
         </div>
-      </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
+      </Link>
+
+      {/* Content Section */}
+      <div className="flex flex-col flex-1 p-4 space-y-3">
+        {/* Title and Date */}
+        <div className="space-y-1">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="font-display font-semibold text-base leading-tight group-hover:text-primary transition-colors duration-300">
+              {title}
+            </h3>
+          </div>
+          <time className="text-xs text-muted-foreground/70">{dates}</time>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-muted-foreground line-clamp-2 flex-1">
+          {description}
+        </p>
+
+        {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {tags?.map((tag) => (
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {tags.slice(0, 4).map((tag) => (
               <Badge
-                className="px-1 py-0 text-[10px]"
-                variant="secondary"
                 key={tag}
+                variant="secondary"
+                className="px-2 py-0.5 text-[10px] font-medium bg-secondary/50 hover:bg-secondary/80 transition-colors"
               >
                 {tag}
               </Badge>
             ))}
+            {tags.length > 4 && (
+              <Badge
+                variant="secondary"
+                className="px-2 py-0.5 text-[10px] font-medium bg-secondary/50"
+              >
+                +{tags.length - 4}
+              </Badge>
+            )}
           </div>
         )}
-      </CardContent>
-      <CardFooter className="px-2 pb-2">
+
+        {/* Links */}
         {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                  {link.icon}
-                  {link.type}
-                </Badge>
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-border/50">
+            {links.map((link, idx) => (
+              <Link
+                href={link.href}
+                key={idx}
+                target="_blank"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                {link.icon}
+                <span>{link.type}</span>
+                <ArrowUpRight className="w-3 h-3" />
               </Link>
             ))}
           </div>
         )}
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 }

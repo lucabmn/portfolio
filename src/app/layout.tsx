@@ -3,12 +3,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Outfit, Syne } from "next/font/google";
 import "./globals.css";
 
-const fontSans = FontSans({
+const fontSans = Outfit({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const fontDisplay = Syne({
+  subsets: ["latin"],
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -56,12 +61,21 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+          fontDisplay.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system">
-          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {/* Background layers */}
+          <div className="fixed inset-0 bg-mesh pointer-events-none" />
+          <div className="fixed inset-0 bg-grid pointer-events-none opacity-30" />
+          <div className="fixed inset-0 bg-noise pointer-events-none" />
+          
+          {/* Main content */}
+          <div className="relative z-10 max-w-2xl mx-auto py-12 sm:py-24 px-6">
+            <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+          </div>
         </ThemeProvider>
       </body>
     </html>
