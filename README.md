@@ -17,7 +17,7 @@
 
 <br />
 
-<img src="https://github.com/user-attachments/assets/preview.png" alt="Portfolio Preview" width="100%" style="border-radius: 12px;" />
+<img src="https://github.com/lucabmn/portfolio/blob/main/public/assets/preview.png" alt="Portfolio Preview" width="100%" style="border-radius: 12px;" />
 
 </div>
 
