@@ -46,6 +46,30 @@ export const DATA = {
   },
   projects: [
     {
+      title: "BucketKit",
+      href: "https://bucketkit.nilovon.com",
+      dates: "December 2025 - Present",
+      active: true,
+      description: "A toolkit for managing your AWS S3 buckets.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://bucketkit.nilovon.com",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/projects/bucketkit.png",
+      video: "",
+    },
+    {
       title: "WeddingVault",
       href: "https://weddingvault.de",
       dates: "January 2025 - Present",
