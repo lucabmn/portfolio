@@ -10,7 +10,7 @@ export const DATA = {
   description: "Entwickler und Fachinformatiker für Systemintegration.",
   summary:
     "Im alter von 13 Jahren, habe ich angefangen mich für die IT zu interessieren. Seitdem habe ich viele Projekte umgesetzt und Erfahrungen gesammelt. Ich bin ein leidenschaftlicher Entwickler und Fachinformatiker für Systemintegration. Ich liebe es, neue Technologien zu lernen und zu verstehen. Ich bin immer auf der Suche nach neuen Herausforderungen und Projekten, an denen ich arbeiten kann.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/me.jpg",
   skills: [
     "React",
     "Next.js",
