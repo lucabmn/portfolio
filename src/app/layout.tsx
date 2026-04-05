@@ -3,17 +3,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const fontSans = Outfit({
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-});
-
-const fontDisplay = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -62,18 +57,11 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontDisplay.variable
+          fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          {/* Background layers */}
-          <div className="fixed inset-0 bg-mesh pointer-events-none" />
-          <div className="fixed inset-0 bg-grid pointer-events-none opacity-30" />
-          <div className="fixed inset-0 bg-noise pointer-events-none" />
-          
-          {/* Main content */}
-          <div className="relative z-10 max-w-2xl mx-auto py-12 sm:py-24 px-6">
+          <div className="max-w-xl mx-auto py-16 sm:py-28 px-6">
             <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
           </div>
         </ThemeProvider>
